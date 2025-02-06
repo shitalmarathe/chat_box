@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { Button } from "@heroui/react";
 import { io } from "socket.io-client";
 
-const socket = io("http://localhost:8000");
+const socket = io("https://peaceful-cheetah-shitalborane-e976c43d.koyeb.app");
 
 function Emote() {
   const [emoji, setEmoji] = useState("😈");
