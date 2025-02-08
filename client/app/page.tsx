@@ -5,10 +5,7 @@ import { Messages, Inputs, Chat, SignUp } from "@/components";
 export default function Home() {
   return (
     <HeroUIProvider>
-      <Chat/>
-      <SignUp/>
-      <Inputs/>
-      <Messages/>
-    </HeroUIProvider>
+    <SignUp/>
+     </HeroUIProvider>
   );
 }
