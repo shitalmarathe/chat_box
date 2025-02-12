@@ -14,10 +14,10 @@ export default function Home() {
   return (
     <HeroUIProvider>
       {user ? (
-        <>
+        <div className="container mx-auto">
           <Messages />
           <Inputs />
-        </>
+        </div>
       ) : (
         <SignUp setUser={setUser} socket={socket} />
       )}
