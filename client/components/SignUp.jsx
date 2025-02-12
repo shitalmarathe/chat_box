@@ -32,6 +32,7 @@ function SignUp({ setUser, socket }) {
     const data = Object.fromEntries(new FormData(e.currentTarget));
 
     sessionStorage.setItem("user", data.name);
+
     socket.emit("user", data.name);
     setUser(data.name);
   };
