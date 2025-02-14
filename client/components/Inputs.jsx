@@ -2,7 +2,7 @@ import React, { useRef, useState } from "react";
 import { Input, Button } from "@heroui/react";
 import { ArrowUpFromLine, SendHorizontalIcon } from "lucide-react";
 
-function Inputs() {
+function Inputs({ socket, name, setMessages }) {
   const [input, setInput] = useState("");
   const inputFile = useRef(null);
 
@@ -12,7 +12,16 @@ function Inputs() {
     // Base 64 conversion
     var reader = new FileReader();
     reader.onloadend = function () {
-      console.log("RESULT", reader.result);
+      const msg = {
+        type: "image",
+        content: reader.result,
+        user: {
+          name: name,
+          id: socket.id,
+        },
+      };
+      socket.emit("message", msg);
+      setMessages((prevState) => [...prevState, msg]);
     };
 
     reader.readAsDataURL(file);
@@ -21,13 +30,25 @@ function Inputs() {
   const handleSubmit = (e) => {
     e.preventDefault();
 
+    socket.emit("typing", { name: name, status: false }); // Typing stopped
+
     if (!input) {
       console.log("File upload functionality");
       inputFile.current.click();
       return;
     }
 
-    console.log(input);
+    
+    const msg = {
+      type: input.startsWith("http") ? "link" : "text",
+      content: input,
+      user: {
+        name: name,
+        id: socket.id,
+      },
+    };
+    socket.emit("message", msg);
+    setMessages((prevState) => [...prevState, msg]);
 
     setInput("");
   };
@@ -43,7 +64,10 @@ function Inputs() {
           size="lg"
           type="text"
           value={input}
-          onChange={(e) => setInput(e.target.value)}
+          onChange={(e) => {
+            setInput(e.target.value);
+            socket.emit("typing", { name: name, status: true }); // Typing started
+          }}
           autoComplete="off"
         />
 

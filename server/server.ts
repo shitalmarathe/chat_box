@@ -27,12 +27,14 @@ io.on("connection", (socket) => {
 
   // When a message is sent
   socket.on("message", (msg) => {
+    console.log(msg);
     socket.broadcast.emit("new_message", msg);
   });
 
   // When a user is typing
-  socket.on("typing", (name) => {
-    socket.broadcast.emit("user_typing", name);
+     socket.on("typing", (obj) => {
+    console.log(obj);
+    socket.broadcast.emit("user_typing", obj);
   });
 });
 
