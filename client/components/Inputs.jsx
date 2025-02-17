@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import { useRef, useState } from "react";
 import { Input, Button } from "@heroui/react";
 import { ArrowUpFromLine, SendHorizontalIcon } from "lucide-react";
 
