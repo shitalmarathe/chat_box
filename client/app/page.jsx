@@ -5,7 +5,7 @@ import { Messages, Inputs, SignUp } from "@/components";
 import { io } from "socket.io-client";
 
 const socket = io(
-  "https://expert-pancake-r7r9r4xvjjh59pj-8000.app.github.dev/"
+  "peaceful-cheetah-shitalborane-e976c43d.koyeb.app/"
 );
 
 
