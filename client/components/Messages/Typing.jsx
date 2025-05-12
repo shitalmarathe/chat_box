@@ -9,7 +9,7 @@ function Typing({ typing }) {
                   <div className="h-1.5 w-1.5 rounded-full bg-gray-400"></div>
                 </div>
                 <div className="h-5 animate-bounce animation-delay-300">
-                  <div class="h-1.5 w-1.5 rounded-full bg-gray-400"></div>
+                  <div className="h-1.5 w-1.5 rounded-full bg-gray-400"></div>
                 </div>
                 <div className="h-5 animate-bounce animation-delay-400">
                   <div className="h-1.5 w-1.5 rounded-full bg-gray-400"></div>
